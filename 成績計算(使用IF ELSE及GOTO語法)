@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+	int grade;																							
+	int a=0,b=0,c=0,student=1;																		/*宣告成績及A、B、C等人數為0，學生數以第一位開始計算*/ 
+	
+	start:																							          /*起始點*/ 
+		
+	if(student<11) 																					      /*學生數<=10人才執行括弧內程式，否則執行第40行*/
+	{
+	printf("請輸入第%d位學生成績[0~100分]:",student);                                               
+	scanf("%d",&grade);
+		if(grade>=0&&grade<=100)																	  /*成績介於0~100才執行括弧內程式，否則執行第36行*/
+		{
+			if(grade>75)																		        	/*成績大於75才執行括弧內程式，否則執行第23行*/ 
+				{
+				 ++a;																				            /*a的人數+1*/ 
+				 printf("您已完成輸入%d位學生的成績\n",student);									
+				 ++student;																			        /*學生數+1*/ 
+	 			 goto start;																		        /*回到起始點*/ 
+				}	 			
+	 				else if(grade<=75&&grade>59)                          /*成績介於60~75才執行括弧內程式，否則執行第30行*/ 
+	 				{
+					 ++b;																			
+	 				 printf("您已完成輸入%d位學生的成績\n",student);						
+	 				 ++student;
+	 				 goto start;
+					} 
+	 					else																	            	/*成績滿足0~100，且不在60~100之間，始執行此行*/ 
+	 					++c;
+	 					printf("您已完成輸入%d位學生的成績\n",student);
+						++student;
+	 					goto start;						 	 			
+		} 
+		else
+		printf("成績輸入錯誤請重新輸入，您以完成輸入至第%d位學生\n",student);
+		goto start;																					        /*回到起始點*/ 
+	}
+	else
+	printf("此次成績分布為：A等%d位、B等%d位、C等%d位\n",a,b,c);
+	
+	system("pause");
+	return 0;
+	} 
